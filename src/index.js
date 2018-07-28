@@ -33,7 +33,7 @@ returnFirstArgument(10);
 function sumWithDefaults(a, b) {
     return a + b;
 }
-sumWithDefaults(10, 20)
+sumWithDefaults(10, 20);
 /*
  Задание 3:
 
@@ -67,6 +67,7 @@ function returnCounter(number) {
 var f1 = returnCounter(10);
 var f2 = returnCounter(11);
 var f3 = returnCounter(12);
+
 console.log(f1());
 console.log(f2());
 console.log(f3());
