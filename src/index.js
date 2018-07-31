@@ -33,9 +33,10 @@ returnFirstArgument(10);
 function sumWithDefaults(a, b) {
     if (b === undefined) {
         b = 100;
-    } else {
-        return a + b;
-    }
+    } 
+       
+    return a + b;
+   
 }
 sumWithDefaults(10, 20);
 sumWithDefaults(2, 4);
@@ -70,10 +71,11 @@ function returnCounter(number) {
     if (number === undefined) {
         number = 0;
        
-    } else {
-        return function F() {
-            return number + 1;
-        }
+    } 
+
+    return function F() {
+        return number + 1;
+       
     }
 } 
 var f1 = returnCounter(10);

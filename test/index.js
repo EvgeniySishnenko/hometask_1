@@ -33,9 +33,10 @@ returnFirstArgument(10);
 function sumWithDefaults(a, b) {
     if (b === undefined) {
         b = 100;
-    } else {
-        return a + b;
-    }
+    } 
+       
+    return a + b;
+   
 }
 sumWithDefaults(10, 20);
 sumWithDefaults(2, 4);
@@ -49,23 +50,10 @@ sumWithDefaults(10);
  Пример:
    returnFnResult(() => 'привет') вернет 'привет'
  */
-function returnCounter(number) {
-    return function F() {
-        if (number === undefined) {
-            namber = 10;
-            return number
-        } else {
-            return number + 1;
-        }
-    }
-    var f1 = returnCounter(10);
-    var f2 = returnCounter(11);
-    var f3 = returnCounter(12);
-
-    console.log(f1());
-    console.log(f2());
-    console.log(f3());
-
+function returnFnResult(fn) {
+    return fn();
+}
+returnFnResult(() => 'привет');
 /*
  Задание 4:
 
@@ -80,22 +68,23 @@ function returnCounter(number) {
    console.log(f()); // выведет 13
  */
 function returnCounter(number) {
+    if (number === undefined) {
+        number = 0;
+       
+    } 
+
     return function F() {
-        if (number === undefined) {
-            namber = 10;
-            return number
-        } else {
-            return number + 1;
-        }
+        return number + 1;
+       
     }
+} 
 var f1 = returnCounter(10);
 var f2 = returnCounter(11);
 var f3 = returnCounter(12);
 
 console.log(f1());
 console.log(f2());
-console.log(f3());
-
+console.log(f3());   
 /*
  Задание 5 *:
 
@@ -106,7 +95,11 @@ console.log(f3());
    returnArgumentsArray(1, 2, 3) вернет [1, 2, 3]
  */
 function returnArgumentsArray() {
+    var array = [].slice.call(arguments);
+    
+    return array;
 }
+returnArgumentsArray(1, 2, 3);
 
 /*
  Задание 6 *:
@@ -123,8 +116,18 @@ function returnArgumentsArray() {
 
    console.log(newSum()) выведет 6
  */
-function bindFunction(fn) {
+function bindFunction(F, a, b) {
+    F = F.bind(null, a, b);
+
+    return F;
 }
+function sum(a, b) {
+    return a + b;
+}
+var newSum = bindFunction(sum, 2, 4);
+
+console.log(newSum());
+
 export {
     returnFirstArgument,
     sumWithDefaults,
